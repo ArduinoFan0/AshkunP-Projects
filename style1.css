@@ -1,0 +1,46 @@
+/*
+#id
+.class
+*/
+body{
+    font-family: sans-serif;
+}
+.button{
+    font-size: 40px;
+    background: linear-gradient(#00FFFF, #00AFAF);
+    color: #FFFFFF;
+    border-radius: 16px;
+    padding: 10px;
+    text-decoration-line: none;
+    text-wrap: nowrap;
+    line-height: 200%;
+}
+.button:hover{
+    text-decoration-line: underline;
+}
+.category
+{
+    text-align: center;
+    border-color: black;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 10px;
+    width: fit-content;
+    justify-self: center;
+    justify-content: center;
+}
+.cat-text
+{
+    font-size: xx-large;
+}
+.cat-item
+{
+    border-color: black;
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-left-width: 4px;
+    border-bottom-width: 4px;
+    border-style: double; border-radius: 10px;
+}
+.cat-item-text
+{}
