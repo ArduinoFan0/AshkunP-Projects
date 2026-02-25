@@ -9,14 +9,17 @@
 </head>
 <body>
     <embed-same-context src="./header.html"></embed-same-context>
-    <div style="text-align: center">
-        <a href="./openutau.html" class="button">OpenUTAU Projects</a>
-        <a href="./dlc.html" class="button">Downloadable Content</a>
-        <a href="./audios.html" class="button">Audio Files</a>
-        <a href="./experiments.html" class="button">Experiments</a>
+    <fieldset class="category">
+        <legend class="cat-text">Experiments</legend>
+        <fieldset class="cat-item">
+            <legend class="cat-item-text">Games</legend>
+            <span onclick="new_window()" class="button">Drawing Canvas</span>
+        </fieldset>
+    </fieldset>
 
 
-    </div>
-    <script src="embed-same-context.js"></script>
+    <script src="./game.js"></script>
+    <script src="./gameenig.js"></script>
+    <script src="./embed-same-context.js"></script>
 </body>
 </html>

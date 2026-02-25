@@ -21,12 +21,11 @@
       },
       "F":{
         "width":8
-      },
+      }
     },
     "instructions":{
       "set":{
         "lda imm":"(arg1) => reg.A = arg1",
-        "lda addr":"(arg1,arg2) => reg.A = RAM[arg1|(arg2<<8)]",
         "lda addr":"(arg1,arg2) => reg.A = RAM[arg1|(arg2<<8)]",
         "lda addr,X":"(arg1,arg2) => reg.A = RAM[(arg1|(arg2<<8))+reg.X]",
         "lda addr,Y":"(arg1,arg2) => reg.A = RAM[(arg1|(arg2<<8))+reg.Y]",
@@ -68,7 +67,7 @@
         "bzs imm":"(arg1) => reg.PC = ((reg&1))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
         "bzc imm":"(arg1) => reg.PC = (!(reg&1))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
         "bge imm":"(arg1) => reg.PC = ((reg&2))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
-        "blt imm":"(arg1) => reg.PC = (!(reg&2))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
+        "blt imm":"(arg1) => reg.PC = (!(reg&2))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC"
         
       }
     }
