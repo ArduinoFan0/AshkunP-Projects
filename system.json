@@ -1,0 +1,76 @@
+{
+  "processor":{
+    "name":"6503",
+    "description":"A totally unrelated proccessor that's inspired by the 6502",
+    "databuswidth":8,
+    "registers":{
+      "A":{
+        "width":8
+      },
+      "X":{
+        "width":8
+      },
+      "Y":{
+        "width":8
+      },
+      "PC":{
+        "width":16
+      },
+      "SP":{
+        "width":16
+      },
+      "F":{
+        "width":8
+      },
+    },
+    "instructions":{
+      "set":{
+        "lda imm":"(arg1) => reg.A = arg1",
+        "lda addr":"(arg1,arg2) => reg.A = RAM[arg1|(arg2<<8)]",
+        "lda addr":"(arg1,arg2) => reg.A = RAM[arg1|(arg2<<8)]",
+        "lda addr,X":"(arg1,arg2) => reg.A = RAM[(arg1|(arg2<<8))+reg.X]",
+        "lda addr,Y":"(arg1,arg2) => reg.A = RAM[(arg1|(arg2<<8))+reg.Y]",
+        "lda (addr)":"(arg1,arg2) => reg.A = RAM[RAM[arg1|(arg2<<8)]|(RAM[(arg1|(arg2<<8))+1]<<8)]",
+        "lda (addr,X)":"(arg1,arg2) => reg.A = RAM[RAM[(arg1|(arg2<<8))+reg.X]|(RAM[(arg1|(arg2<<8))+1+reg.X]<<8)]",
+        "lda (addr),Y":"(arg1,arg2) => reg.A = RAM[(RAM[arg1|(arg2<<8)]|(RAM[(arg1|(arg2<<8))+1]<<8))+reg.Y]",
+        "lda (addr,X),Y":"(arg1,arg2) => reg.A = RAM[(RAM[(arg1|(arg2<<8))+reg.X]|(RAM[(arg1|(arg2<<8))+1+reg.X]<<8))+reg.Y]",
+        "ldx imm":"(arg1) => reg.X = arg1",
+        "ldx addr":"(arg1,arg2) => reg.X = RAM[arg1|(arg2<<8)]",
+        "ldy imm":"(arg1) => reg.Y = arg1",
+        "ldy addr":"(arg1,arg2) => reg.Y = RAM[arg1|(arg2<<8)]",
+        "sta addr":"(arg1,arg2) => RAM[arg1|(arg2<<8)] = reg.A",
+        "sta addr,X":"(arg1,arg2) => RAM[(arg1|(arg2<<8))+reg.X] = reg.A",
+        "sta addr,Y":"(arg1,arg2) => RAM[(arg1|(arg2<<8))+reg.Y] = reg.A",
+        "sta (addr)":"(arg1,arg2) => RAM[RAM[arg1|(arg2<<8)]|(RAM[(arg1|(arg2<<8))+1]<<8)] = reg.A",
+        "sta (addr,X)":"(arg1,arg2) => RAM[RAM[(arg1|(arg2<<8))+reg.X]|(RAM[(arg1|(arg2<<8))+1+reg.X]<<8)] = reg.A",
+        "sta (addr),Y":"(arg1,arg2) => RAM[(RAM[arg1|(arg2<<8)]|(RAM[(arg1|(arg2<<8))+1]<<8))+reg.Y] = reg.A",
+        "sta (addr,X),Y":"(arg1,arg2) => RAM[(RAM[(arg1|(arg2<<8))+reg.X]|(RAM[(arg1|(arg2<<8))+1+reg.X]<<8))+reg.Y] = reg.A",
+        "stx addr":"(arg1,arg2) => RAM[arg1|(arg2<<8)] = reg.X",
+        "sty addr":"(arg1,arg2) => RAM[arg1|(arg2<<8)] = reg.Y",
+        "tax":"() => reg.X = reg.A",
+        "tay":"() => reg.Y = reg.A",
+        "txa":"() => reg.A = reg.X",
+        "tya":"() => reg.A = reg.Y",
+        "txy":"() => reg.Y = reg.X",
+        "tyx":"() => reg.X = reg.Y",
+        "txypc":"() => reg.PC = reg.X|(reg.Y<<8)",
+        "txysp":"() => reg.SP = reg.X|(reg.Y<<8)",
+        "tlspa":"() => reg.A = reg.SP&0xFF",
+        "thspa":"() => reg.A = (reg.SP>>8)&0xFF",
+        "tlpca":"() => reg.A = reg.PC&0xFF",
+        "thpca":"() => reg.A = (reg.PC>>8)&0xFF",
+        "cia imm":"(arg1) => reg.F = (reg.F&(~0x03))|(reg.A==arg1)|((reg.A>=arg1)<<1)",
+        "cma addr":"(arg1,arg2) => reg.F = (reg.F&(~0x03))|(reg.A==RAM[arg1|(arg2<<8)])|((reg.A>=RAM[arg1|(arg2<<8)])<<1)",
+        "cix imm":"(arg1) => reg.F = (reg.F&(~0x03))|(reg.X==arg1)|((reg.X>=arg1)<<1)",
+        "cmx addr":"(arg1,arg2) => reg.F = (reg.F&(~0x03))|(reg.X==RAM[arg1|(arg2<<8)])|((reg.X>=RAM[arg1|(arg2<<8)])<<1)",
+        "ciy imm":"(arg1) => reg.F = (reg.F&(~0x03))|(reg.Y==arg1)|((reg.Y>=arg1)<<1)",
+        "cmy addr":"(arg1,arg2) => reg.F = (reg.F&(~0x03))|(reg.Y==RAM[arg1|(arg2<<8)])|((reg.Y>=RAM[arg1|(arg2<<8)])<<1)",
+        "bzs imm":"(arg1) => reg.PC = ((reg&1))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
+        "bzc imm":"(arg1) => reg.PC = (!(reg&1))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
+        "bge imm":"(arg1) => reg.PC = ((reg&2))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
+        "blt imm":"(arg1) => reg.PC = (!(reg&2))?(reg.PC+(arg1&128?-128+(arg1&0x7F):arg1&0x7F)):reg.PC",
+        
+      }
+    }
+  }
+}
