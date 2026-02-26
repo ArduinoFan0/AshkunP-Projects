@@ -19,8 +19,7 @@
             }
 
         }
-        GameLogic = new GameLogic([mouse, ticks, renderer])
-        GameLogic.initGame()
+        GameLogic = new GameLogic([mouse, ticks, game_canvas, renderer])
         function game(){
             const imagedata = renderer.getImageData(0,0,renderer.canvas.width,renderer.canvas.height)
             game_canvas.setAttribute("width", window.innerWidth.toString())
